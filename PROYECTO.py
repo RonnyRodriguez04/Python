@@ -2,7 +2,9 @@
 # las opciones se proponen por caracteres
 opA = "0"
 opcion = '0'
-
+opli = "0"
+opr = "0"
+lista = []
 while not (opcion == '9'):
     print("/=======MENU PRINCIPAL=======\ ")
     print(' 1. Arreglo')
@@ -10,6 +12,9 @@ while not (opcion == '9'):
     print(' 3. Cadenas')
     print(' 4. Punteros')
     print(' 5. Ordenamiento')
+    print(' 6. Lista')
+    print(' 7. Arbol')
+    print(' 8. Recursividad')
     print(' 0. Salir')
 
     opcion = input('Que opcion desea ver---> ')
@@ -186,6 +191,120 @@ while not (opcion == '9'):
                     min_index = j
             numeros[i], numeros[min_index] = numeros[min_index], numeros[i]
         print("Ordenamiento por selección:", numeros)
+    elif (opcion == '6'):
+        while not (opli == "9"):
+            print("/=======Menu de Lista=======\ ")
+            print("1. Añadir elemento")
+            print("2. Eliminar elemento")
+            print("3. Mostrar la lista")
+            print("4. Volver al menú principal")
+            opli = input("Selecciona una opción: ")
+            if (opli == "1"):
+                elemento = input("Ingresa el elemento a agregar: ")
+                lista.append(elemento)
+            elif (opli == "2"):
+                if lista:
+                    elemento_eliminado = lista.pop()
+                    print(f"Elemento eliminado: {elemento_eliminado}")
+                else:
+                    print("La lista está vacía.")
+            elif (opli == "3"):
+                print("/----------------------------\ ")
+                print("Lista:", lista)
+                print("/-----------------------------\ ")
+            elif (opli == "4"):
+                break
+    elif (opcion == '7'):
+        print("/=======Ejemplo de Arbol=======\ ")
+
+        class Nodo:
+            def __init__(self, valor):
+                self.valor = valor
+                self.izquierdo = None
+                self.derecho = None
+
+        class ArbolBinario:
+            def __init__(self, raiz):
+                self.raiz = Nodo(raiz)
+
+            def insertar(self, valor, nodo=None):
+                if nodo is None:
+                    nodo = self.raiz
+                if valor < nodo.valor:
+                    if nodo.izquierdo is None:
+                        nodo.izquierdo = Nodo(valor)
+                    else:
+                        self.insertar(valor, nodo.izquierdo)
+                elif valor > nodo.valor:
+                    if nodo.derecho is None:
+                        nodo.derecho = Nodo(valor)
+                    else:
+                        self.insertar(valor, nodo.derecho)
+                else:
+                    # Valor ya existe, manejar según tus necesidades
+                    pass
+
+            def recorrer_inorden(self, nodo=None):
+                if nodo is None:
+                    nodo = self.raiz
+                elementos = []
+                if nodo.izquierdo is not None:
+                    elementos.extend(self.recorrer_inorden(nodo.izquierdo))
+                elementos.append(nodo.valor)
+                if nodo.derecho is not None:
+                    elementos.extend(self.recorrer_inorden(nodo.derecho))
+                return elementos
+
+        # Ejemplo de uso
+        arbol = ArbolBinario(10)
+        arbol.insertar(5)
+        arbol.insertar(15)
+        arbol.insertar(3)
+        arbol.insertar(8)
+        arbol.insertar(12)
+        arbol.insertar(18)
+
+        # Recorrer el árbol en orden (inorden)
+        elementos_inorden = arbol.recorrer_inorden()
+        print("Recorrido inorden del árbol:", elementos_inorden)
+    elif (opcion == '8'):
+        while not (opr == "9"):
+            print("/=======Menu de Recursividad=======\ ")
+            print("1.- Serie Fibonacci")
+            print("2.- Función Factorial")
+            print("3.- Salir")
+            opr = input("Cual desea ver-->")
+            if (opr == "1"):
+                def fibonacci(n):
+                    if n <= 0:
+                        return "El número debe ser mayor que cero"
+                    elif n == 1:
+                        return 0
+                    elif n == 2:
+                        return 1
+                    else:
+                        return fibonacci(n - 1) + fibonacci(n - 2)
+                # Ejemplo de uso
+                numero_elementos = 10
+                resultado_fibonacci = [
+                    fibonacci(i) for i in range(1, numero_elementos + 1)]
+
+                print(
+                    f"Serie Fibonacci de los primeros {numero_elementos} elementos:", resultado_fibonacci)
+            elif (opr == '2'):
+                def factorial(n):
+                    if n == 0 or n == 1:
+                        return 1
+                    else:
+                        return n * factorial(n - 1)
+
+                # Ejemplo de uso
+                numero = 5
+                resultado_factorial = factorial(numero)
+
+                print(f"El factorial de {numero} es: {resultado_factorial}")
+            elif (opr == '3'):
+                break
     elif (opcion == '0'):
         print(' **** Saliendo del menu  ****')
         break
