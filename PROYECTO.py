@@ -5,7 +5,7 @@ opcion = '0'
 opli = "0"
 opr = "0"
 lista = []
-while not (opcion == '9'):
+while not (opcion == '9'):  # MENU PRINCIPAL DEL PROGRAMA
     print("/=======MENU PRINCIPAL=======\ ")
     print(' 1. Arreglo')
     print(' 2. Registro')
@@ -17,6 +17,7 @@ while not (opcion == '9'):
     print(' 8. Recursividad')
     print(' 0. Salir')
 
+    # Este input su funcionamiento es poder interactuar con el menu principal del programa
     opcion = input('Que opcion desea ver---> ')
 
     if (opcion == '1'):
@@ -28,7 +29,8 @@ while not (opcion == '9'):
             print("4. SALIR")
 
             opA = input(
-                "Que arreglo desea mostrar ---> ")
+                "Que arreglo desea mostrar ---> ")  # Este input su objetivo es poder interactuar con este sub menú la cual le pertenece a los arreglos
+# NOTA: para poder seguir usando las siguientes opciones del menu principal debe primero salir del menú de arreglo
             if (opA == "1"):
                 print("==========EJEMPLOS DE ARREGLO UNIDIMENSIONAL==========")
                 print("[1,5,8,3,30,9,13]")
@@ -139,7 +141,7 @@ while not (opcion == '9'):
             elif (opA == "4"):
                 break
 
-    elif (opcion == '2'):
+    elif (opcion == '2'):  # UN EJEMPLO DEL REGISTRO EM DONDE SE INTERACTUA CON EL EJEMPLO
         print(' /======= Ejemplo Registro =======\ ')
         fruta = {}
         fruta["Fruta"] = input("Ingrese Nombre de la Fruta --> ")
@@ -199,15 +201,18 @@ while not (opcion == '9'):
             print("3. Mostrar la lista")
             print("4. Volver al menú principal")
             opli = input("Selecciona una opción: ")
-            if (opli == "1"):
+# NOTA: para poder seguir usando las siguientes opciones del menu principal debe primero salir del menú de lista
+            if (opli == "1"):  # En esta opcion se podra agregar un elemnto a la lista
                 elemento = input("Ingresa el elemento a agregar: ")
+                # el método append sirve para guardar los elementos que se vayan agregando
                 lista.append(elemento)
             elif (opli == "2"):
                 if lista:
+                    # El método pop en cambio sirve para eliminar el ultimo elemento agregado a la lista
                     elemento_eliminado = lista.pop()
                     print(f"Elemento eliminado: {elemento_eliminado}")
                 else:
-                    print("La lista está vacía.")
+                    print("No se ha registrado ningún elemento.")
             elif (opli == "3"):
                 print("/----------------------------\ ")
                 print("Lista:", lista)
@@ -215,7 +220,7 @@ while not (opcion == '9'):
             elif (opli == "4"):
                 break
     elif (opcion == '7'):
-        print("/=======Ejemplo de Arbol=======\ ")
+        print("/=======Ejemplo de Árbol Binario=======\ ")
 
         class Nodo:
             def __init__(self, valor):
@@ -241,7 +246,6 @@ while not (opcion == '9'):
                     else:
                         self.insertar(valor, nodo.derecho)
                 else:
-                    # Valor ya existe, manejar según tus necesidades
                     pass
 
             def recorrer_inorden(self, nodo=None):
@@ -257,12 +261,12 @@ while not (opcion == '9'):
 
         # Ejemplo de uso
         arbol = ArbolBinario(10)
-        arbol.insertar(5)
-        arbol.insertar(15)
-        arbol.insertar(3)
-        arbol.insertar(8)
+        arbol.insertar(10)
         arbol.insertar(12)
-        arbol.insertar(18)
+        arbol.insertar(5)
+        arbol.insertar(9)
+        arbol.insertar(11)
+        arbol.insertar(28)
 
         # Recorrer el árbol en orden (inorden)
         elementos_inorden = arbol.recorrer_inorden()
@@ -288,9 +292,12 @@ while not (opcion == '9'):
                 numero_elementos = 10
                 resultado_fibonacci = [
                     fibonacci(i) for i in range(1, numero_elementos + 1)]
-
+                print(
+                    "|-------------------------------------------------------------------------------------| ")
                 print(
                     f"Serie Fibonacci de los primeros {numero_elementos} elementos:", resultado_fibonacci)
+                print(
+                    "|-------------------------------------------------------------------------------------| ")
             elif (opr == '2'):
                 def factorial(n):
                     if n == 0 or n == 1:
@@ -299,14 +306,15 @@ while not (opcion == '9'):
                         return n * factorial(n - 1)
 
                 # Ejemplo de uso
-                numero = 5
+                numero = 7
                 resultado_factorial = factorial(numero)
-
+                print("|-----------------------------------------| ")
                 print(f"El factorial de {numero} es: {resultado_factorial}")
+                print("|-----------------------------------------| ")
             elif (opr == '3'):
                 break
     elif (opcion == '0'):
-        print(' **** Saliendo del menu  ****')
+        print('--------Gracias por usar el programa ^_^--------')
         break
     else:
         print('No existe la opcion en el menu')
