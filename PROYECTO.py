@@ -221,6 +221,7 @@ while not (opcion == '9'):  # MENU PRINCIPAL DEL PROGRAMA
                 break
     elif (opcion == '7'):
         print("/=======Ejemplo de Árbol Binario=======\ ")
+        # En este ejemplo se utilizo las clases para definir los datos y funcipnaldiades de cada objeto creado
 
         class Nodo:
             def __init__(self, valor):
